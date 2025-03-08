@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">NavBotDialog</string>
+    <string name="open_nav">Open Navigation Drawer</string>
+    <string name="close_nav">Close Navigation Drawer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home_fragment">Home fragment</string>
+    <string name="settings_fragment">Setting fragment</string>
+    <string name="share_fragment">Share fragment</string>
+    <string name="about_fragment">About fragment</string>
+    <string name="logout_fragment">Logout fragment</string>
+    <string name="short_fragment">Short fragment</string>
+    <string name="subscriptions_fragment">Subscriptions fragment</string>
+    <string name="library_fragment">Library fragment</string>
+    <string name="video_fragment">Video fragment</string>
+    <string name="live_fragment">Live fragment</string>
+</resources>
