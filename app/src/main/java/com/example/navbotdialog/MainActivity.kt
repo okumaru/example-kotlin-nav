@@ -3,39 +3,45 @@ package com.example.navbotdialog
 import android.annotation.SuppressLint
 import android.app.Dialog
 import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
-import android.os.Build
 import android.os.Bundle
 import android.view.Gravity
 import android.view.MenuItem
-import android.view.View
 import android.view.ViewGroup
 import android.view.Window
 import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.drawable.toDrawable
 import androidx.core.view.GravityCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.navbotdialog.databinding.ActivityMainBinding
 import com.google.android.material.navigation.NavigationView
-import androidx.core.graphics.drawable.toDrawable
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var fragmentManager: FragmentManager
     private lateinit var binding: ActivityMainBinding
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
+
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+                    binding.drawerLayout.closeDrawer(GravityCompat.START)
+                }
+                finish()
+            }
+        })
+
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        enableEdgeToEdge()
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)
@@ -75,15 +81,16 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
-    @Deprecated("Deprecated in Java")
-    override fun onBackPressed() {
-        super.onBackPressed()
-        if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            binding.drawerLayout.closeDrawer(GravityCompat.START)
-        } else {
-            super.onBackPressedDispatcher.onBackPressed()
-        }
-    }
+//    @Deprecated("Deprecated in Java")
+//    override fun onBackPressed() {
+//        super.onBackPressed()
+//        super.onBackPressedDispatcher.onBackPressed()
+//        if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
+//            binding.drawerLayout.closeDrawer(GravityCompat.START)
+//        } else {
+//            super.onBackPressedDispatcher.onBackPressed()
+//        }
+//    }
 
     @SuppressLint("CommitTransaction")
     private fun openFragment(fragment: Fragment) {
@@ -116,10 +123,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             openFragment(LiveFragment())
         }
 
-        dialogs.show();
-        dialogs.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-        dialogs.window?.setBackgroundDrawable(Color.TRANSPARENT.toDrawable());
-        dialogs.window?.attributes?.windowAnimations = R.style.DialogAnimation;
-        dialogs.window?.setGravity(Gravity.BOTTOM);
+        dialogs.show()
+        dialogs.window?.setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT)
+        dialogs.window?.setBackgroundDrawable(Color.TRANSPARENT.toDrawable())
+        dialogs.window?.attributes?.windowAnimations = R.style.DialogAnimation
+        dialogs.window?.setGravity(Gravity.BOTTOM)
     }
 }

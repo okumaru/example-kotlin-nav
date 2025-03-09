@@ -38,8 +38,10 @@
                 android:id="@+id/bottomAppBar"
                 android:layout_gravity="bottom"
                 android:backgroundTint="@color/lavender"
-                app:fabCradleMargin="10dp"
-                app:fabCradleRoundedCornerRadius="50dp">
+                android:layout_margin="0dp"
+                android:padding="0dp"
+                app:contentInsetEnd="0dp"
+                app:contentInsetStart="0dp">
 
                 <com.google.android.material.bottomnavigation.BottomNavigationView
                     android:layout_width="wrap_content"
@@ -47,7 +49,8 @@
                     android:id="@+id/bottom_navigation"
                     app:labelVisibilityMode="labeled"
                     app:menu="@menu/bottom_menu"
-                    android:background="@android:color/transparent" />
+                    android:background="@android:color/transparent"
+                    />
 
             </com.google.android.material.bottomappbar.BottomAppBar>
             
