@@ -27,7 +27,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var fragmentManager: FragmentManager
     private lateinit var binding: ActivityMainBinding
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
 
@@ -80,17 +79,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         binding.drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
-
-//    @Deprecated("Deprecated in Java")
-//    override fun onBackPressed() {
-//        super.onBackPressed()
-//        super.onBackPressedDispatcher.onBackPressed()
-//        if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)) {
-//            binding.drawerLayout.closeDrawer(GravityCompat.START)
-//        } else {
-//            super.onBackPressedDispatcher.onBackPressed()
-//        }
-//    }
 
     @SuppressLint("CommitTransaction")
     private fun openFragment(fragment: Fragment) {
